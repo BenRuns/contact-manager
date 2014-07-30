@@ -37,6 +37,10 @@ gem 'spring',        group: :development
 
 #Use debugger
 # gem 'debugger', group: [:development, :test]
+group :development, :test do
 
-gem 'minitest', '~> 5.4.0', group: [:development, :test]
+	gem 'minitest', '~> 5.4.0'
+	gem "factory_girl_rails", "~> 4.0"
+	
+end
 

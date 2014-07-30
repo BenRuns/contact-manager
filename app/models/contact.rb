@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
 
 	validates :first_name, presence:true,
-						length: {minimum: 2}
+						length: {minimum: 1
+						}
 end

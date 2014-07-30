@@ -1,5 +1,11 @@
 class ContactsController < ApplicationController
 
+	def index
+		@contacts = Contact.all
+		render 'index'
+
+	end
+
 	def create
 		@contact = Contact.create(contact_params)
 		redirect_to "/contacts"

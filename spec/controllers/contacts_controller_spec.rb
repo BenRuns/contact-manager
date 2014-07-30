@@ -1,18 +1,19 @@
-require 'test_helper'
+require 'spec_helper'
 
-class ContactsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-  let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+ 
+  #let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
 
   describe "POST create" do 
+
+  	#let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+
   	it "can be created with only first_name and phone number " do 
   		post :create,:contact=> {:first_name => "ben", :phone_number => "763-6655"}
 
-  		(Contact.last.first_name).must_equal("ben")
+  		expect(Contact.last.first_name).to eq("ben")
 
   	end
+    
     it "can be created with only first_name and email" do 
       post :create, :contact=> {:first_name => "ben", :email => "fake@email"}
   
@@ -23,8 +24,8 @@ class ContactsControllerTest < ActionController::TestCase
       post :create, :contact=> { :phone_number => "763-6655", :id => 2}
 
       (Contact.find_by_id(2)).must_be_nil
-    end
-  		
+
+    e
 
 
   
@@ -45,6 +46,16 @@ class ContactsControllerTest < ActionController::TestCase
     end
 
   end
+  # describe "GET index" do 
+  #   it "returns a  contact"
+
+  describe "GET index" do 
+    it "returns a list of contacts by first_name" do
+      get :index, :contact => { :first_name => 'ben' }
+      assigns(:contacts).must_equal([contact])
+    end
+  end
+
 
 
 

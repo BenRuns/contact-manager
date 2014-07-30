@@ -2,10 +2,11 @@ require 'spec_helper'
 
  
   #let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+describe ContactsController do
 
   describe "POST create" do 
 
-  	#let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+  	let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
 
   	it "can be created with only first_name and phone number " do 
   		post :create,:contact=> {:first_name => "ben", :phone_number => "763-6655"}
@@ -17,32 +18,32 @@ require 'spec_helper'
     it "can be created with only first_name and email" do 
       post :create, :contact=> {:first_name => "ben", :email => "fake@email"}
   
-      (Contact.last.first_name).must_equal("ben")
+      expect(Contact.last.first_name).to eq("ben")
     end
 
     it "can't be created with out a first_name  " do 
       post :create, :contact=> { :phone_number => "763-6655", :id => 2}
 
-      (Contact.find_by_id(2)).must_be_nil
+      expect(Contact.find_by_id(2)).to eq(nil)
 
-    e
+    
 
 
   
   end
   describe "POST update" do 
     it "changes attributes of the first_name " do 
-      (Contact.find_by_id(contact.id).first_name).must_equal("ben")
+      expect(Contact.find_by_id(contact.id).first_name).to eq("ben")
       put :update,:id => contact.id , :contact => {:first_name => "Jack"}
-      (Contact.find_by_id(contact.id).first_name).must_equal("Jack")
+      expect(Contact.find_by_id(contact.id).first_name).to eq("Jack")
     end
   end
 
   describe "DELETE destroy" do
     it "deletes a contact" do 
-      (Contact.find_by_id(contact.id)).must_equal(contact)
+      expect(Contact.find_by_id(contact.id)).to eq(contact)
       put :destroy ,:id => contact.id 
-     (Contact.find_by_id(contact.id)).must_be_nil 
+     expect(Contact.find_by_id(contact.id)).to eq(nil)
     end
 
   end
@@ -52,9 +53,10 @@ require 'spec_helper'
   describe "GET index" do 
     it "returns a list of contacts by first_name" do
       get :index, :contact => { :first_name => 'ben' }
-      assigns(:contacts).must_equal([contact])
+      assigns(:contacts).to eq([contact])
     end
   end
+end
 
 
 

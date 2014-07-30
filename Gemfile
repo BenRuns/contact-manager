@@ -39,7 +39,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 group :development, :test do
 
-	gem 'minitest', '~> 5.4.0'
+	gem 'minitest-spec-rails'
 	gem "factory_girl_rails", "~> 4.0"
 	gem 'faker', '~> 1.4.2'
 end

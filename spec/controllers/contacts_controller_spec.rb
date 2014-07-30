@@ -53,7 +53,18 @@ describe ContactsController do
   describe "GET index" do 
     it "returns a list of contacts by first_name" do
       get :index, :contact => { :first_name => 'ben' }
-      assigns(:contacts).to eq([contact])
+      expect(assigns(:contacts)).to eq([contact])
+    end
+  end
+  describe "GET show" do 
+    it "renders the show template" do
+      get :show, :id => contact.id 
+      response.should render_template("show")
+    end
+
+    it "renders the contact by id" do 
+      get :show, :id => contact.id 
+      expect(assigns(:contact)).to eq(contact)
     end
   end
 
@@ -70,6 +81,17 @@ describe ContactsController do
       expect(assigns(:contact)).to eq(contact)
     end
   end	
+
+  describe "GET new" do 
+    it "renders the new template" do 
+      get :new, :id => contact.id 
+
+      response.should render_template("new")
+    end
+
+
+  end 
+
 end
 
 

@@ -1,0 +1,9 @@
+<h1><%= @contact.first_name %> -Editing Contact</h1>
+
+
+<%= form_for @contact, url: {action: "update"}   do |form| %>
+  
+  <%= render partial: form %>
+   
+
+<% end %>

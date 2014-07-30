@@ -11,6 +11,9 @@ class ContactsController < ApplicationController
 	
 	end
 
+	def new
+	end
+
 
 	def create
 		@contact = Contact.create(contact_params)
@@ -29,6 +32,10 @@ class ContactsController < ApplicationController
 		@contact = Contact.find_by_id(params[:id])
 		@contact.delete
 		redirect_to "/"
+	end
+
+	def show 
+		@contact = Contact.find_by_id(params[:id])
 	end
 
 	private

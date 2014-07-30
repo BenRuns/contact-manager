@@ -1,8 +1,29 @@
 class ContactsController < ApplicationController
 
 	def create
-		@contact = Contact.create(:first_name => params[:first_name], :phone_number => params[:phone_number])
+		@contact = Contact.create(contact_params)
 		redirect_to "/contacts"
 
 	end
+
+	def update
+		@contact = Contact.find_by_id(params[:id])
+		@contact.update_attributes(contact_params)
+		
+		redirect_to contact_path(@contact)
+
+	end
+	def destroy
+		@contact = Contact.find_by_id(params[:id])
+		@contact.delete
+		redirect_to "/"
+	end
+
+	private
+
+  	def contact_params
+    	params.require(:contact).permit(:first_name, :email, :password, :last_name, :phone_number, :address, :middle_name )
+  	end
+
+
 end

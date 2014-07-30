@@ -56,7 +56,22 @@ describe ContactsController do
       assigns(:contacts).to eq([contact])
     end
   end
+
+  describe "GET edit" do 
+  	it "renders the edit template" do 
+  		get :edit, :id => contact.id 
+
+  		response.should render_template("edit")
+  	end
+
+    it "edits the correct user" do 
+      get :edit, :id => contact.id 
+
+      expect(assigns(:contact)).to eq(contact)
+    end
+  end	
 end
+
 
 
 

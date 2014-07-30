@@ -5,6 +5,12 @@ class ContactsController < ApplicationController
 		render 'index'
 
 	end
+	def edit
+		@contact = Contact.find_by_id(params[:id])
+		render 'edit'
+	
+	end
+
 
 	def create
 		@contact = Contact.create(contact_params)

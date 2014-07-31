@@ -50,11 +50,19 @@ describe ContactsController do
   # describe "GET index" do 
   #   it "returns a  contact"
 
-  describe "GET index" do 
+  describe "GET find" do 
     it "returns a list of contacts by first_name" do
-      get :index, :contact => { :first_name => 'ben' }
       expect(assigns(:contacts)).to eq([contact])
+
+      get :find, :contact => { :first_name => 'ben' }
+     
+
     end
+    it "renders the index page " do
+      get :find , :contact => { :first_name => 'ben' }
+      response.should render_template("index")
+    end
+
   end
   describe "GET show" do 
     it "renders the show template" do

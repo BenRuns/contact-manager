@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
 		render 'index'
 
 	end
+
 	def edit
 		@contact = Contact.find_by_id(params[:id])
 		render 'edit'
@@ -37,6 +38,13 @@ class ContactsController < ApplicationController
 
 	def show 
 		@contact = Contact.find_by_id(params[:id])
+	end
+
+	def find
+		@contacts = Contact.where("first_name = ?", contact_params[:first_name])
+		render 'index'
+
+
 	end
 
 	private

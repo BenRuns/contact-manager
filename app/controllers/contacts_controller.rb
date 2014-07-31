@@ -19,8 +19,13 @@ class ContactsController < ApplicationController
 
 	def create
 		@contact = Contact.create(contact_params)
-		redirect_to "/contacts"
-
+		if @contact.save 
+			flash[:success] = "Contact has been successfuly added"
+			redirect_to "/contacts"
+		else
+			flash[:error] = "There was a problem adding the contact"
+			render 'new'
+		end		
 	end
 
 	def update

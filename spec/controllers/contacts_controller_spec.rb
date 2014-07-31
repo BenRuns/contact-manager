@@ -52,7 +52,7 @@ describe ContactsController do
 
   describe "GET find" do 
     it "returns a list of contacts by first_name" do
-      expect(assigns(:contacts)).to eq([contact])
+      expect(page).body.to contain(contact.first_name)
 
       get :find, :contact => { :first_name => 'ben' }
      

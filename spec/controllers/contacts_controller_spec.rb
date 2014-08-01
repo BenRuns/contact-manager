@@ -3,7 +3,7 @@ require 'spec_helper'
  
   #let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
 describe ContactsController do
-  let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+  let(:contact) { create(:contact) }
 
 
   describe "POST create" do 
@@ -27,7 +27,6 @@ describe ContactsController do
 
   describe "POST update" do 
     it "changes attributes of the first_name " do 
-      expect(Contact.find_by_id(contact.id).first_name).to eq("ben")
       put :update,:id => contact.id , :contact => {:first_name => "Jack"}
       expect(Contact.find_by_id(contact.id).first_name).to eq("Jack")
     end
@@ -39,28 +38,24 @@ describe ContactsController do
       put :destroy ,:id => contact.id 
      expect(Contact.find_by_id(contact.id)).to eq(nil)
     end
-
   end
-  # describe "GET index" do 
-  #   it "returns a  contact"
+  
 
   describe "GET find" do 
     it "returns a list of contacts by first_name" do
-
       10.times { |x| create(:contact) }
       contact.first_name = "ben"
       get :find , :contact => { :first_name => 'ben' }
       response.should render_template("index")
       expect(assigns(:contacts).all? {|x| x.first_name == 'ben'}).to eq(true) 
-
     end
 
     it "renders the index page " do
       get :find , :contact => { :first_name => 'ben' }
       response.should render_template("index")
     end
-
   end
+
   describe "GET show" do 
     it "renders the show template" do
       get :show, :id => contact.id 
@@ -82,7 +77,6 @@ describe ContactsController do
 
     it "edits the correct user" do 
       get :edit, :id => contact.id 
-
       expect(assigns(:contact)).to eq(contact)
     end
   end	

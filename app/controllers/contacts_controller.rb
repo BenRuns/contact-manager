@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
 
 	def index
-		@contacts = Contact.all
+		@contacts = Contact.order('first_name')
 		render 'index'
 
 	end

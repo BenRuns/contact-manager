@@ -48,8 +48,21 @@ class ContactsController < ApplicationController
 	end
 
 	def find
-		@contacts = Contact.where("first_name = ?", contact_params[:first_name])
-		render 'index'
+		if params[:contact].nil?
+			render 'search'
+		
+		else
+			a = contact_params.delete_if { |x,y| y.empty? }
+			b = a.collect { |x,y| "#{x}='#{y}'" if !y.nil? }
+	
+			c =  b
+
+			
+
+
+			@contacts = Contact.where( c.join(" AND " ) )
+			render 'index'
+		end
 
 
 	end

@@ -3,34 +3,28 @@ require 'spec_helper'
  
   #let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
 describe ContactsController do
+  let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
+
 
   describe "POST create" do 
 
-  	let(:contact) { Contact.create(:first_name => "ben", :phone_number => "763-6655", :id => 1) }
-
   	it "can be created with only first_name and phone number " do 
   		post :create,:contact=> {:first_name => "ben", :phone_number => "763-6655"}
-
   		expect(Contact.last.first_name).to eq("ben")
-
   	end
     
     it "can be created with only first_name and email" do 
       post :create, :contact=> {:first_name => "ben", :email => "fake@email.com"}
-  
       expect(Contact.last.first_name).to eq("ben")
     end
 
     it "can't be created with out a first_name  " do 
       post :create, :contact=> { :phone_number => "763-6655", :id => 2}
-
       expect(Contact.find_by_id(2)).to eq(nil)
-
-    
-
-
-  
+    end
   end
+
+
   describe "POST update" do 
     it "changes attributes of the first_name " do 
       expect(Contact.find_by_id(contact.id).first_name).to eq("ben")
@@ -52,16 +46,15 @@ describe ContactsController do
 
   describe "GET find" do 
     it "returns a list of contacts by first_name" do
-      
+
       10.times { |x| create(:contact) }
       contact.first_name = "ben"
       get :find , :contact => { :first_name => 'ben' }
       response.should render_template("index")
-      expect(assigns(:contacts).all? {|x| x.first_name == 'ben'}).to eq(true)
-      
-      
+      expect(assigns(:contacts).all? {|x| x.first_name == 'ben'}).to eq(true) 
 
     end
+
     it "renders the index page " do
       get :find , :contact => { :first_name => 'ben' }
       response.should render_template("index")
@@ -100,8 +93,6 @@ describe ContactsController do
 
       response.should render_template("new")
     end
-
-
   end 
 
 end
@@ -110,5 +101,3 @@ end
 
 
 
-
-end

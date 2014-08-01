@@ -1,18 +1,20 @@
-<table> 
-	<tr>
+<table class="results"> 
+	<tr class="results-headers">
 		<th> First Name </th>
 		<th> Last Name </th>
 		<th> Email  </th>
 		<th> Phone </th>
+		<th> Location  </th>
 		<th> View </th>
 		<th> Edit </th>
 	</tr>
 <% @contacts.each do |contact| %>
-	<tr>
+	<tr class="results-entry">
 		<td> <%= contact.first_name %> </td>
 		<td> <%= contact.last_name %> </td>
 		<td> <%= mail_to contact.email %> </td>
 		<td> <%= contact.phone_number %> </td>
+		<td> <%= contact.city %>, <%= contact.state %>, <%= contact.country %></td>
 		<td> <%= link_to "View", contact_path(contact) %> </td>
 		<td> <%= link_to "Edit", edit_contact_path(contact) %> </td>
 	</tr>
@@ -20,7 +22,5 @@
 
 <% end %>
 </table>
-<%= button_to "Add New Contact", new_contact_path, :method => :get %> 
-
 
 

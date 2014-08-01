@@ -52,10 +52,14 @@ describe ContactsController do
 
   describe "GET find" do 
     it "returns a list of contacts by first_name" do
-      expect(page).body.to contain(contact.first_name)
-
-      get :find, :contact => { :first_name => 'ben' }
-     
+      
+      10.times { |x| create(:contact) }
+      contact.first_name = "ben"
+      get :find , :contact => { :first_name => 'ben' }
+      response.should render_template("index")
+      expect(assigns(:contacts).all? {|x| x.first_name == 'ben'}).to eq(true)
+      
+      
 
     end
     it "renders the index page " do

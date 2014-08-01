@@ -16,7 +16,7 @@ describe ContactsController do
   	end
     
     it "can be created with only first_name and email" do 
-      post :create, :contact=> {:first_name => "ben", :email => "fake@email"}
+      post :create, :contact=> {:first_name => "ben", :email => "fake@email.com"}
   
       expect(Contact.last.first_name).to eq("ben")
     end

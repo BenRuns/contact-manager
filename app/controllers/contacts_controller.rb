@@ -53,14 +53,9 @@ class ContactsController < ApplicationController
 		
 		else
 			a = contact_params.delete_if { |x,y| y.empty? }
-			b = a.collect { |x,y| "#{x}='#{y}'" if !y.nil? }
-	
-			c =  b
-
-			
-
-
-			@contacts = Contact.where( c.join(" AND " ) )
+			#b = a.collect { |x,y| "#{x}='#{y}'" if !y.nil? }
+			#c =  ActiveRecord::Base::sanitize_sql_for_conditions(a)
+			@contacts = Contact.where( a )
 			render 'index'
 		end
 

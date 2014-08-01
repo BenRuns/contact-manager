@@ -33,8 +33,10 @@ describe "Adding a contact to the do list" do
 		visit contacts_path
 		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
-		fill_in "contact_first_name", with: "Ben"
-		click_button "Create Contact"
+		within("#new_contact") do 
+			fill_in "contact_first_name", with: "Ben"
+			click_button "Create Contact"
+		end
 		expect(page).to have_content("There was a problem adding the contact")
 		expect(page).to have_content("Please enter an Email or Phone Number")
 
@@ -46,9 +48,12 @@ describe "Adding a contact to the do list" do
 		visit contacts_path
 		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
-		fill_in "contact_first_name", with: "Ben"
-		fill_in "contact_email", with: "not$real"
-		click_button "Create Contact"
+		within("#new_contact") do 
+			fill_in "contact_first_name", with: "Ben"
+			fill_in "contact_email", with: "not$real"
+			click_button "Create Contact"
+		end 
+
 		expect(page).to have_content("There was a problem adding the contact")
 		expect(page).to have_content("Please enter a valid email")
 

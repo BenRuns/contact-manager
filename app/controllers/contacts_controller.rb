@@ -25,7 +25,9 @@ class ContactsController < ApplicationController
 			flash[:success] = "Contact has been successfully added"
 			redirect_to "/contacts"
 		else
-			flash[:error] = "There was a problem adding the contact"
+			flash[:error] = "There was a problem adding the contact." +
+							" " + @contact.errors.full_messages.join(', ')
+
 			render 'new'
 		end		
 	end

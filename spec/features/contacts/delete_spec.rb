@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 
-describe "Deleting a contact do"
+describe "Deleting a contact do" do
 	let!(:contact) {create(:contact)}
 	 
 
@@ -14,9 +14,10 @@ describe "Deleting a contact do"
 		visit contacts_path
 		within("#results-entry-#{id}") do 
 			click_link "Edit"
-			expect(page).to have_content("Editing")
-			click_link "Delete"
+
 		end
+		expect(page).to have_content("Editing")
+		click_link "Delete"
 		expect(page).to have_content("Are you sure you want to delete this contact?")
 		click_link "Yes"
 		expect(page).to have_content("Contact has been successfully deleted")

@@ -40,7 +40,7 @@ class ContactsController < ApplicationController
 
 		if @contact.save 
 			
-			flash[:success] = "Contact has been successfully added"
+			flash[:success] = "Contact has been successfully updated"
 			redirect_to "/contacts"
 		else
 			flash[:error] = "There was a problem adding the contact." +

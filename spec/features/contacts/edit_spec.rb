@@ -20,8 +20,8 @@ describe "Editing a contact to the do list" do
 			fill_in "contact_phone_number", with: "833-88755-888"
 			click_button "Update Contact"
 		end
-		
-		expect(page).to have_content("Contact has been successfully added")
+
+		expect(page).to have_content("Contact has been successfully updated")
 		
 		within("#results-entry-#{contact.id}") do 
 			expect(page).to have_content("Ben")

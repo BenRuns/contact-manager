@@ -1,10 +1,13 @@
-<ul>
-<li> <%= @contact.first_name %> </li>
-<li> <%= @contact.last_name %> </li>
-<li> <%= @contact.phone_number %></li>
-<li> <%= @contact.email %> </li>
-<li> <%= @contact.street_address %> </li>
-<li> <%= @contact.postal_code %></li>
-<li> <%= @contact.state %></li>
-<li> <%= @contact.country %></li>
+<ul class="contact-view" id=<%="contact-view-"+"#{@contact.id}" %> >
+<li><h4> First Name: </h4> <%= @contact.first_name %> </li>
+<li><h4> Last Name: </h4> <%= @contact.last_name %> </li>
+<li><h4> Phone:  </h4> <%= @contact.phone_number %></li>
+<li><h4>Email: </h4>  <%= @contact.email %> </li>
+<li> <h4> Street Address:</h4> <%= @contact.street_address %> </li>
+<li> <h4> City </h4> <%= @contact.city %></li>
+<li> <h4> Postal Code </h4> <%= @contact.postal_code %></li>
+<li> <h4> State </h4> <%= @contact.state %></li>
+<li><h4> Country </h4>  <%= @contact.country %></li>
+<li>  <%= link_to "Edit", edit_contact_path(@contact) %>  </li>
 </ul>
+

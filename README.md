@@ -1,4 +1,24 @@
+Setting up  :
 
+Requires postgres installed and ruby on rails 
+
+
+To get the server running locally on http://localhost:3000/
+
+	Git clone repo to a local file
+	Go to the appropriate directory in the command line
+
+	bundle install
+
+	rake db:create
+	rake db:migrate
+	rails s
+
+To create fake data for the app use 
+
+	rake db:populate 
+	File for populating data uses 'faker' gem
+	located at app/lib/tasks/sample_data.rake
 
 
 -Fields

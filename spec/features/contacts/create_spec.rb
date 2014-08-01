@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe "Adding a contact to the do list" do 
+describe "Adding a contact " do 
 	let!(:contact) {create(:contact)}
 
 

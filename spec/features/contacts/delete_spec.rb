@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 
-describe "Deleting a contact do" do
+describe "Deleting a contact" do
 	let!(:contact) {create(:contact)}
 	 
 

@@ -9,7 +9,7 @@
 		<th> Edit </th>
 	</tr>
 <% @contacts.each do |contact| %>
-	<tr class="results-entry">
+	<tr class="results-entry" id=<%="results-entry-"+"#{contact.id}" %> >
 		<td> <%= contact.first_name %> </td>
 		<td> <%= contact.last_name %> </td>
 		<td> <%= mail_to contact.email %> </td>

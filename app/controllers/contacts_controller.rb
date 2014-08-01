@@ -36,7 +36,18 @@ class ContactsController < ApplicationController
 		@contact = Contact.find_by_id(params[:id])
 		@contact.update_attributes(contact_params)
 		
-		redirect_to contact_path(@contact)
+	
+
+		if @contact.save 
+			
+			flash[:success] = "Contact has been successfully added"
+			redirect_to "/contacts"
+		else
+			flash[:error] = "There was a problem adding the contact." +
+							" " + @contact.errors.full_messages.join(', ')
+
+			render 'edit'
+		end		
 
 	end
 	def destroy

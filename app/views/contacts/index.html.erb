@@ -1,9 +1,17 @@
 <table> 
+	<tr>
+		<th> First Name </th>
+		<th> Last Name </th>
+		<th> Email  </th>
+		<th> Phone </th>
+		<th> View </th>
+		<th> Edit </th>
+	</tr>
 <% @contacts.each do |contact| %>
 	<tr>
 		<td> <%= contact.first_name %> </td>
-		<td> <%= contact.email %> </td>
 		<td> <%= contact.last_name %> </td>
+		<td> <%= mail_to contact.email %> </td>
 		<td> <%= contact.phone_number %> </td>
 		<td> <%= link_to "View", contact_path(contact) %> </td>
 		<td> <%= link_to "Edit", edit_contact_path(contact) %> </td>

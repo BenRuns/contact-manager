@@ -1,3 +1,6 @@
+
+This is a contact manager being written for exercise purposes
+
 Setting up  :
 
 Requires postgres installed and ruby on rails 
@@ -15,6 +18,7 @@ To get the server running locally on http://localhost:3000/
 	rails s
 
 To create fake data for the app use 
+   Running the below will reset the local db in addition to adding fake data
 
 	rake db:populate 
 	File for populating data uses 'faker' gem

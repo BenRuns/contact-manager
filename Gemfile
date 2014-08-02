@@ -48,6 +48,5 @@ group :test do
   gem 'capybara', '~> 2.4.1'
   gem 'shoulda-matchers', '~> 2.6.2'
   gem 'faker', '~> 1.4.2'
-  
 end
 

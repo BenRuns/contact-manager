@@ -1,6 +1,8 @@
 
 This is a contact manager being written for exercise purposes
 
+Current version at http://ben-contact-manager.herokuapp.com/
+
 Setting up  :
 
 Requires postgres installed and ruby on rails 
@@ -8,8 +10,8 @@ Requires postgres installed and ruby on rails
 
 To get the server running locally on http://localhost:3000/
 
-	Git clone repo to a local file
-	Go to the appropriate directory in the command line
+Git clone repo to a local file
+Go to the appropriate directory in the command line
 
 	bundle install
 
@@ -17,12 +19,11 @@ To get the server running locally on http://localhost:3000/
 	rake db:migrate
 	rails s
 
-To create fake data for the app use 
-   Running the below will reset the local db in addition to adding fake data
+To populate fake data for the app use 
+    
+    rake db:seed
 
-	rake db:populate 
-	File for populating data uses 'faker' gem
-	located at app/lib/tasks/sample_data.rake
+
 
 
 -Fields

@@ -14,22 +14,29 @@ describe Contact do
 
   end
 
-  it "should save with a first name and number " do 
+  it "should save with a first name, last name  and email" do 
    
   	@contact.first_name = "Fake"
-  	@contact.phone_number = "6765443333"
+    @contact.last_name = "FakeLname"
+  	@contact.email = "fake@email.com"
   	expect(@contact.save).to eq(true)
   end
 
-  it "should not save an invalid email" do 
+
+
+  it "should not save with an invalid email " do 
   	 
   	@contact.first_name = "Fake"
+    @contact.last_name = "FakeLname"
   	@contact.email = "6765443333"
+
   	expect(@contact.save).to eq(false)
   end
 
-  it "should save  a valid email" do 
+  it "should save with a valid email " do 
+
   	@contact.first_name = "Fake"
+    @contact.last_name = "FakeLname"
   	@contact.email = "fake@email.com"
   	expect(@contact.save).to eq(true)
 
@@ -39,6 +46,7 @@ describe Contact do
   it "should not save a first name over 35 characters" do 
   	forty_a = "a" * 40
   	@contact.first_name = forty_a
+    @contact.last_name = "FakeLname"
   	expect(@contact.save).to eq(false)
   end
 
@@ -52,6 +60,7 @@ describe Contact do
   it "should not save a middle name over 35 characters" do 
   	forty_a = "e" * 40
   	@contact.first_name = "Ben"
+    @contact.last_name = "FakeLname"
   	@contact.middle_name = forty_a
   	expect(@contact.save).to eq(false)
   end

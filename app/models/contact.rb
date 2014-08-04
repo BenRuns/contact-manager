@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
 
-	validates :first_name, :presence => { :message => "You must enter a First Name and Email or Phone Number" },
+	validates :first_name, :presence => { :message => "Please enter a First Name"},
 						length: {minimum: 1,  maximum: 35
 						}
 						
@@ -8,11 +8,11 @@ class Contact < ActiveRecord::Base
 	validates :middle_name, allow_blank:true,
 						length: {minimum: 1,  maximum: 35
 						}
-	validates :last_name, allow_blank:true,
+	validates :last_name, :presence => { :message => "Please enter a Last Name"},
 						length: {minimum: 1,  maximum: 35
 						}
 
-	validates :email, allow_blank:true,
+	validates :email, :presence => { :message => "Please enter an Email"},
 					  format: {
                       with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/,
                       message: "Please enter a valid email"}

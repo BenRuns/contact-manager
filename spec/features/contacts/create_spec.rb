@@ -1,56 +1,87 @@
 require 'spec_helper'
 
 
-describe "Adding a contact " do 
-	let!(:contact) {create(:contact)}
-
-
-	it "is successful with valid content" do
+feature "User trys to add a contact " do 
+	
+	before do 
 		visit contacts_path
 		click_button "Add New Contact"
+	end
+
+
+	scenario "user adds valid content " do
+
 		expect(page).to have_content("New Contact")
 		within("#new_contact") do 
-			fill_in "contact_first_name", with: "Ben"
-			fill_in "contact_phone_number", with: "833-88755-888"
+			fill_in "First Name", with: "Ben"
+			fill_in "Last Name", with: "There"
+			fill_in "Email", with: "Fake@email.com"
 			click_button "Create Contact"
 		end
 		expect(page).to have_content("Contact has been successfully added")
 	end
 
-	it "is unsuccessful without content" do
+	scenario "doesn't enter content before hitting Create Contact" do
 
 		visit contacts_path
 		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
 		click_button "Create Contact"
 		expect(page).to have_content("There was a problem adding the contact")
-		expect(page).to have_content("You must enter a First Name and Email or Phone Number")
+		expect(page).to have_content("Please enter a First Name")
+		expect(page).to have_content("Please enter a Last Name")
+		expect(page).to have_content("Please enter an Email")
 
 	end
 
-	it "is unsuccessful with only a first name" do
+	scenario "only enters a first name and last name" do
 
 		visit contacts_path
 		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
 		within("#new_contact") do 
-			fill_in "contact_first_name", with: "Ben"
+			fill_in "First Name", with: "Ben"
+			fill_in "Last Name", with: "There"
 			click_button "Create Contact"
 		end
 		expect(page).to have_content("There was a problem adding the contact")
-		expect(page).to have_content("Please enter an Email or Phone Number")
+		expect(page).to have_content("Please enter an Email")
+
+	end
+
+	scenario "only enters a first name" do
+
+		expect(page).to have_content("New Contact")
+		within("#new_contact") do 
+			fill_in "First Name", with: "Ben"
+			click_button "Create Contact"
+		end
+		expect(page).to have_content("There was a problem adding the contact")
+		expect(page).to have_content("Please enter a Last Name")
+		expect(page).to have_content("Please enter an Email")
+
+	end
+	scenario "only enters a first name" do
+
+		expect(page).to have_content("New Contact")
+		within("#new_contact") do 
+			fill_in "First Name", with: "Ben"
+			click_button "Create Contact"
+		end
+		expect(page).to have_content("There was a problem adding the contact")
+		expect(page).to have_content("Please enter a Last Name")
+		expect(page).to have_content("Please enter an Email")
 
 	end
 
 
-	it "is unsuccessful with a bad email " do
+	scenario "enters a bad email" do
 
-		visit contacts_path
-		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
 		within("#new_contact") do 
-			fill_in "contact_first_name", with: "Ben"
-			fill_in "contact_email", with: "not$real"
+			fill_in "First Name", with: "Ben"
+			fill_in "Last Name", with: "There"
+			fill_in "Email", with: "not$real"
 			click_button "Create Contact"
 		end 
 
@@ -59,10 +90,8 @@ describe "Adding a contact " do
 
 	end
 
-	it "is unsuccessful with strange characters in the phone number " do
+	scenario "is unsuccessful with strange characters in the phone number " do
 
-		visit contacts_path
-		click_button "Add New Contact"
 		expect(page).to have_content("New Contact")
 		fill_in "contact_first_name", with: "Ben"
 		fill_in "contact_phone_number", with: "555$999"

@@ -93,8 +93,8 @@ feature "User trys to add a contact " do
 	scenario "is unsuccessful with strange characters in the phone number " do
 
 		expect(page).to have_content("New Contact")
-		fill_in "contact_first_name", with: "Ben"
-		fill_in "contact_phone_number", with: "555$999"
+		fill_in "First Name", with: "Ben"
+		fill_in "Phone Number", with: "555$999"
 		click_button "Create Contact"
 		expect(page).to have_content("There was a problem adding the contact")
 		expect(page).to have_content("Please enter the phone number without non-standard characters ")

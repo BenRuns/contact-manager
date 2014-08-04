@@ -74,7 +74,16 @@ describe Contact do
     expect(@contact.save).to eq(false)
   end
 
- 
+ it "does not save duplicate email" do 
+    @contact.first_name = "Fake"
+    @contact.last_name = "FakeLname"
+    @contact.email = "fake@email.com"
+    expect(@contact.save).to eq(true)
+
+    duplicateemail = Contact.new :first_name => "Fake", :last_name =>"FakeLname", :email => "fake@email.com"
+    expect(duplicateemail.save).to eq(false)
+  end
+
 
 
 

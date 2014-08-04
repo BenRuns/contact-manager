@@ -13,6 +13,7 @@ class Contact < ActiveRecord::Base
 						}
 
 	validates :email, :presence => { :message => "Please enter an Email"},
+					  :uniqueness => { :message => "That email is already in the database ", case_sensitive: false },
 					  format: {
                       with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/,
                       message: "Please enter a valid email"}

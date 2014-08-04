@@ -31,7 +31,7 @@ describe ContactsController do
       contact.first_name = "Firstversion"
       contact.email = "copy@one.com"
       contact.save
-      post :create, :contact=> {:first_name => "Secondversion",:last_name => "There", :email => "fake@email.com", :state => "OR",:id => 2}
+      post :create, :contact=> {:first_name => "Secondversion",:last_name => "There", :email => "copy@one.com", :state => "OR",:id => 2}
       expect(Contact.find_by_first_name("Firstversion").email).to eq("copy@one.com")
       expect(Contact.find_by_first_name("Secondversion")).to eq(nil)
     end

@@ -26,6 +26,8 @@ class Contact < ActiveRecord::Base
     validates :postal_code, allow_blank:true ,length: {minimum: 1,  maximum: 20}
 
     validates :country, allow_blank:true ,length: {minimum: 1,  maximum: 40}
+
+    validates :phone_number, allow_blank:true ,length: {minimum: 1,  maximum: 20}
     
     
 #    validate :must_have_email_or_phone

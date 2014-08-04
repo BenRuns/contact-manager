@@ -66,9 +66,9 @@ describe Contact do
 
 
   it "should not save with an email over 256 characters" do 
-    TwoFifty8 = ("e" * 50) +"@" + ("b" * 208) +".com"
+    two_fifty_8 = ("e" * 50) +"@" + ("b" * 208) +".com"
     @contact.update_attributes(@valid_attributes) 
-    @contact.email = TwoFifty8
+    @contact.email = two_fifty_8
     expect(@contact.save).to eq(false)
   end
 
@@ -83,47 +83,46 @@ describe Contact do
   end
   
   it "should not save with an address over 256 characters" do 
-    TwoFifty8 = ("e" * 50) +"@" + ("b" * 208) +".com"
+    two_fifty_8 = ("e" * 50) +"@" + ("b" * 208) +".com"
     @contact.update_attributes(@valid_attributes) 
-    @contact.email = TwoFifty8
+    @contact.email = two_fifty_8
     expect(@contact.save).to eq(false)
   end
 
   it "should not save with an state over 40 characters" do 
-    Fifty_E = ("e" * 50) 
+    fifty_e = ("e" * 50) 
     @contact.update_attributes(@valid_attributes)  
-    @contact.state = Fifty_E
+    @contact.state = fifty_e
     expect(@contact.save).to eq(false)
   end
 
   it "should not save with an city over 40 characters" do 
-    Fifty_E = ("e" * 50) 
+    fifty_e = ("e" * 50) 
     @contact.update_attributes(@valid_attributes)  
-    @contact.city = Fifty_E
+    @contact.city = fifty_e
     expect(@contact.save).to eq(false)
   end
 
   it "should not save with an postal over 20 characters" do 
-    Twenty_E = ("e" * 21) 
+    twenty_e = ("e" * 21) 
     @contact.update_attributes(@valid_attributes)  
-    @contact.postal_code = Twenty_E
+    @contact.postal_code = twenty_e
     expect(@contact.save).to eq(false)
   end
 
   it "should not save with an country over 40 characters" do 
-    Fifty_E = ("e" * 50) 
+    fifty_e = ("e" * 50) 
     @contact.update_attributes(@valid_attributes)  
-    @contact.country = Fifty_E
+    @contact.country = fifty_e
     expect(@contact.save).to eq(false)
   end
 #   #TODO
-#   it "should not save with an phone over 256 characters" do 
-#     TwoFifty8 = ("e" * 50) +"@" + ("b" * 208) +".com"
-#     @contact.first_name = "Ben"
-#     @contact.last_name = "FakeLname"
-#     @contact.email = TwoFifty8
-#     expect(@contact.save).to eq(false)
-#   end
+  it "should not save with an phone over20 characters" do 
+    twenty_e = ("e" * 21) 
+    @contact.update_attributes(@valid_attributes)  
+    @contact.phone_number = twenty_e
+    expect(@contact.save).to eq(false)
+  end
 
 
 

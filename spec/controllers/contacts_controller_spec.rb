@@ -8,13 +8,13 @@ describe ContactsController do
 
   describe "POST create" do 
 
-  	it "can be created with only first_name and phone number " do 
-  		post :create,:contact=> {:first_name => "ben", :phone_number => "763-6655"}
-  		expect(Contact.last.first_name).to eq("ben")
+  	it "can't be created with only first_name and phone number " do 
+  		post :create,:contact=> {:first_name => "ben", :phone_number => "763-6655", :id => 2}
+  		expect(Contact.find_by_id(2)).to eq(nil)
   	end
     
-    it "can be created with only first_name and email" do 
-      post :create, :contact=> {:first_name => "ben", :email => "fake@email.com"}
+    it "can be created with only first_name, last_name and email" do 
+      post :create, :contact=> {:first_name => "ben",:last_name => "There", :email => "fake@email.com"}
       expect(Contact.last.first_name).to eq("ben")
     end
 

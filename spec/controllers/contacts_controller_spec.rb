@@ -15,12 +15,25 @@ describe ContactsController do
     
     it "can be created with only first_name, last_name and email" do 
       post :create, :contact=> {:first_name => "ben",:last_name => "There", :email => "fake@email.com"}
-      expect(Contact.last.first_name).to eq("ben")
+      expect(Contact.find_by_email("fake@email.com").first_name).to eq("ben")
     end
 
     it "can't be created with out a first_name  " do 
-      post :create, :contact=> { :phone_number => "763-6655", :id => 2}
-      expect(Contact.find_by_id(2)).to eq(nil)
+      post :create, :contact=> { :phone_number => "763-6655" }
+      expect(Contact.find_by_phone_number("763-6655")).to eq(nil)
+    end
+    it "saves two letter state codes" do 
+      post :create, :contact=> {:first_name => "ben",:last_name => "There", :email => "fake@email.com", :state => "OR",:id => 2}
+      expect(Contact.find_by_last_name("There").state).to eq("OR")
+    end
+
+    it "should not save a duplicate email" do
+      contact.first_name = "Firstversion"
+      contact.email = "copy@one.com"
+      contact.save
+      post :create, :contact=> {:first_name => "Secondversion",:last_name => "There", :email => "fake@email.com", :state => "OR",:id => 2}
+      expect(Contact.find_by_first_name("Firstversion").email).to eq("copy@one.com")
+      expect(Contact.find_by_first_name("Secondversion")).to eq(nil)
     end
   end
 
@@ -30,6 +43,7 @@ describe ContactsController do
       put :update,:id => contact.id , :contact => {:first_name => "Jack"}
       expect(Contact.find_by_id(contact.id).first_name).to eq("Jack")
     end
+
   end
 
   describe "DELETE destroy" do

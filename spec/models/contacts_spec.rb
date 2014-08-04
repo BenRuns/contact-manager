@@ -66,6 +66,16 @@ describe Contact do
   end
 
 
+  it "should not save a middle name over 35 characters" do 
+    forty_a = "e" * 40
+    @contact.first_name = "Ben"
+    @contact.last_name = "FakeLname"
+    @contact.middle_name = forty_a
+    expect(@contact.save).to eq(false)
+  end
+
+ 
+
 
 
 

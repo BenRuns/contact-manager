@@ -1,0 +1,152 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+body {
+font-family: 'Oxygen', sans-serif;
+width: 100%
+}
+body.container{
+	width:90%;
+	margin:auto;
+}
+
+
+div.flash.alert{
+	border: 2px solid #aaa;
+	padding: 10px;
+}
+
+div.flash.success {border: 2px solid green; color:green;}
+div.flash.error {border: 2px solid red; color:red;}
+div.flash.notice {border: 2px solid blue; color:blue;}
+table.results tr:nth-child(even)
+{
+background:#fdfde0;
+}
+/***  Results/search  ***/
+
+tr.results-entry td{
+	padding: .2em;
+	border-bottom: 1pt solid rgba(0,0,0,.5);
+}
+tr.results-entry >td{
+	transition:3s;
+	}
+tr.results-entry > td:hover{
+	padding-bottom: 1em;
+	padding-top: 1em;
+	transition-delay:2s ease ;
+}
+
+/*** view  ***/
+
+ul.contact-view{
+	list-style: none;
+}
+ul.contact-view li{
+	
+	float: left;
+	clear: left;
+	width: 100%;
+}
+ul.contact-view li h4{
+	margin: 10px;
+	float: left;
+	font-family: 'Oxygen', sans-serif;
+
+
+}
+ul.contact-view li p{
+	margin: 10px;
+	float: left;
+
+}
+
+/*** form for new contact  ***/
+
+form.new_contact{
+	width: 400px;
+}
+form.new_contact ul{
+	
+list-style: none;
+}
+
+form.new_contact li{
+	
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	padding-top: .2em;
+	border-top: 1px solid lightgray;
+}
+form.new_contact input:focus{
+	background: #fdfde0
+
+}
+form.new_contact ul li label{
+	display: inline-block;
+	min-width: 45%;
+	}
+form.new_contact ul li input{
+	display: inline-block;
+	min-width: 48%;
+	}
+/*** form for edit contact  ***/
+
+form.edit_contact ul{
+	list-style: none;
+}
+form.edit_contact{
+	width: 400px;
+}
+form.edit_contact li{
+	
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	padding-top: .2em;
+	border-top: 1px solid lightgray;
+}
+form.edit_contact input:focus{
+	background: #fdfde0
+
+}
+form.edit_contact ul li label{
+	display: inline-block;
+	min-width: 45%;
+	}
+form.edit_contact ul li input{
+	display: inline-block;
+	min-width: 48%;
+	}
+
+form.edit_contact input::-webkit-input-placeholder{
+	color:transparent;
+}
+form.edit_contact input::-moz-placeholder {
+	color: transparent;
+}
+form.edit_contact input:-moz-placeholder {  
+	color: transparent;
+}
+form.edit_contact input:-ms-input-placeholder { 
+	color: transparent;
+}
+
+

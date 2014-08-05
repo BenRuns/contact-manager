@@ -50,11 +50,24 @@ describe Contact do
   	expect(@contact.save).to eq(false)
   end
 
+  it "should not save a first name under 2 characters" do 
+     
+    @contact.first_name = "a"
+    @contact.last_name = "FakeLname"
+    expect(@contact.save).to eq(false)
+  end
+
   it "should not save a last name over 35 characters" do 
   	forty_a = "d" * 40
   	@contact.first_name = "Ben"
   	@contact.last_name = forty_a
   	expect(@contact.save).to eq(false)
+  end
+
+  it "should not save a last name over 2 characters" do 
+    @contact.first_name = "Ben"
+    @contact.last_name = "s"
+    expect(@contact.save).to eq(false)
   end
 
   it "should not save a middle name over 35 characters" do 
@@ -117,15 +130,48 @@ describe Contact do
     expect(@contact.save).to eq(false)
   end
 #   #TODO
-  it "should not save with an phone over20 characters" do 
+
+  it "should not save with an phone over 20 characters" do 
     twenty_e = ("e" * 21) 
     @contact.update_attributes(@valid_attributes)  
     @contact.phone_number = twenty_e
     expect(@contact.save).to eq(false)
   end
 
+  it "should validate  a US zip code format when country is the US" do      
+    @contact.update_attributes(@valid_attributes)  
+    @contact.country = "USA"
+    @contact.postal_code = "12345"
+    expect(@contact.save).to eq(true)
+  end
+  it "should reject a wrong US zip code format when country is the US" do      
+    @contact.update_attributes(@valid_attributes)  
+    @contact.country = "USA"
+    @contact.postal_code = "12345XYZ"
+    expect(@contact.save).to eq(false)
+  end
 
 
+  it "should validate a US zip code format when country is the US" do      
+    @contact.update_attributes(@valid_attributes)  
+    @contact.country = "US"
+    @contact.postal_code = "12345-1234"
+    expect(@contact.save).to eq(true)
+  end
+
+  it "accepts a US phone format when country is the US" do      
+    @contact.update_attributes(@valid_attributes)  
+    @contact.country = "US"
+    @contact.phone_number = "123-455-1234"
+    expect(@contact.save).to eq(true)
+  end
+
+  it "rejects a non-US phone format when country is the US" do      
+    @contact.update_attributes(@valid_attributes)  
+    @contact.country = "US"
+    @contact.phone_number = "44444123-455-1234"
+    expect(@contact.save).to eq(false)
+  end
 
 
 

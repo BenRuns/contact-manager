@@ -54,5 +54,6 @@ group :test do
   gem 'shoulda-matchers', '~> 2.6.2'
   gem 'faker', '~> 1.4.2'
   gem 'selenium-webdriver', '~> 2.0'
+  gem 'simplecov', :require => false
 end
 

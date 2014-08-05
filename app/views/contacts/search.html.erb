@@ -1,0 +1,37 @@
+<%= form_tag({controller:'contacts', action: "find" }, method: "get",) do %>
+  <ul>
+  <li> 
+
+  <%=label_tag(:first_name , "First Name") %>
+  <%=search_field(:contact, :first_name )  %>
+  </li>
+  <li>
+
+    <%=label_tag(:last_name , "Last Name") %>
+  <%=search_field(:contact, :last_name )  %>
+    </li>
+  <li>
+
+    <%=label_tag(:email , "Email" ) %>
+  <%=search_field(:contact, :email )  %>
+    </li>
+  <li>
+
+   <%=label_tag(:city, "City" ) %>
+  <%=search_field(:contact, :city )  %>
+    </li>
+  <li>
+
+   <%=label_tag(:state , "State" ) %>
+  <%=search_field(:contact, :state )  %>
+  </li>
+  <li>
+
+    <%=label_tag(:phone_number , "Phone Number") %>
+  <%=search_field(:contact, :phone_number )  %>
+   </li>
+  <li>
+  <%= submit_tag "Search" %>
+  </li>
+  </ul>
+<% end %>

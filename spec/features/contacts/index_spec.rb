@@ -5,10 +5,14 @@ describe "Viewing the Index Page" do
 	27.times {|x| let!(x.to_s) {create(:contact)} }
 
 
-	it "only shows 25 contacts " do
+	it "only shows a max 25 contacts per page and can click next " do
 		visit contacts_path 
 		 within ".results" do
 		 	expect(page).to have_css(".results-entry", :count=>25)
+		end
+		click_link("2")
+		within ".results" do
+		 	expect(page).to have_css(".results-entry", :count=>2)
 		end
 	end
 

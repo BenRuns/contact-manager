@@ -1,7 +1,10 @@
 class ContactsController < ApplicationController
 
 	def index
-		@contacts = Contact.order('first_name')
+		@contacts = Contact.order('first_name').paginate(:page => params[:page], :per_page => 25)
+		
+
+		
 		render 'index'
 
 	end
@@ -53,6 +56,7 @@ class ContactsController < ApplicationController
 	def destroy
 		@contact = Contact.find_by_id(params[:id])
 		@contact.delete
+		flash[:success] = "Contact has been successfully deleted"
 		redirect_to contacts_path
 	end
 

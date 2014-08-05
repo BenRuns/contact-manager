@@ -9,9 +9,9 @@ FactoryGirl.define do
     street_address { Faker::Address.street_address }
     city { Faker::Address.city}
     state { Faker::Address.state_abbr }
-    country { Faker::Address.country}
+    country {Faker::Lorem.characters(20)}
     postal_code { Faker::Address.postcode }
-    phone_number { Faker::PhoneNumber.phone_number }
+    sequence(:phone_number, 1000) { |n| "978-443-#{n}" }
     email { Faker::Internet.email}
 
   end

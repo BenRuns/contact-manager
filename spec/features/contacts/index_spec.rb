@@ -10,7 +10,7 @@ describe "Viewing the Index Page" do
 		 within ".results" do
 		 	expect(page).to have_css(".results-entry", :count=>25)
 		end
-		click_link("2")
+		click_link("Next")
 		within ".results" do
 		 	expect(page).to have_css(".results-entry", :count=>2)
 		end

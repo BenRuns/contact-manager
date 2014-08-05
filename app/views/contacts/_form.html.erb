@@ -1,43 +1,43 @@
 <ul>
 <li>
 <%= form.label :first_name, "First Name" %>
-<%= form.text_field :first_name %>
+<%= form.text_field :first_name ,:placeholder => "First Name" %>
 </li>
 <li>
 <%= form.label :middle_name, "Middle Name" %>
-<%= form.text_field :middle_name %>
+<%= form.text_field :middle_name, :placeholder => "Middle Name"%>
 </li>
 <li>
 <%= form.label :last_name , "Last Name" %>
-<%= form.text_field :last_name %>
+<%= form.text_field :last_name, :placeholder => "Last Name" %>
 </li>
 <li>
 <%= form.label :phone_number, "Phone Number" %>
-<%= form.text_field :phone_number %>
+<%= form.text_field :phone_number, :placeholder => "123-456-7890"  %>
 </li>
 <li>
 <%= form.label :email, "Email" %>
-<%= form.text_field :email  %>
+<%= form.text_field :email, :placeholder => "contact@email.com"  %>
 </li>
 <li>
 <%= form.label :street_address,  "Address" %>
-<%= form.text_field :street_address %>
+<%= form.text_field :street_address, :placeholder => "Address"  %>
 </li>
 <li>
 <%= form.label :city,"City" %>
-<%= form.text_field :city %>
+<%= form.text_field :city, :placeholder => "City" %>
 </li>
 <li>
-<%= form.label :city, "State" %>
-<%= form.text_field :city %>
+<%= form.label :state, "State" %>
+<%= form.text_field :state, :placeholder => "State"  %>
 </li>
 <li>
 <%= form.label :postal_code, "Post Code" %>
-<%= form.text_field :postal_code %>
+<%= form.text_field :postal_code, :placeholder => "Post Code 12345-1222" %>
 </li>
 <li>
 <%= form.label :country, "Country" %>
-<%= form.text_field :country %>
+<%= form.text_field :country, :placeholder => "Country" %>
 </li>
 </ul>
 <%= form.submit %>

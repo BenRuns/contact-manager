@@ -41,14 +41,14 @@ tr.results-entry td{
 	padding: .2em;
 	border-bottom: 1pt solid rgba(0,0,0,.5);
 }
-tr.results-entry >td{
+/*tr.results-entry >td{
 	transition:3s;
 	}
 tr.results-entry > td:hover{
 	padding-bottom: 1em;
 	padding-top: 1em;
 	transition-delay:2s ease ;
-}
+}*/
 
 /*** view  ***/
 

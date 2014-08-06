@@ -34,7 +34,7 @@ class Contact < ActiveRecord::Base
     validates :phone_number, allow_blank:true ,length: {minimum: 6,  maximum: 20},
     		  format: { with: /(^\d{3}\-\d{3}\-\d{4}$)/ , if: "!country.nil? && country =~ /^US$|^USA$/", :message => "Please enter a phone number in the NNN-NNN-NNNN format"}
 
-
+    validates :street_address, allow_blank:true ,length: {minimum: 6,  maximum: 200}
     
     
 #    validate :must_have_email_or_phone

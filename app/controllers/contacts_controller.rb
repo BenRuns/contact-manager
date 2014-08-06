@@ -65,8 +65,16 @@ class ContactsController < ApplicationController
 	end
 
 	def find
-		@contacts = Contact.where("first_name = ?", contact_params[:first_name])
-		render 'index'
+		if params[:contact].nil?
+			render 'search'
+		
+		else
+			a = contact_params.delete_if { |x,y| y.empty? }
+			#b = a.collect { |x,y| "#{x}='#{y}'" if !y.nil? }
+			#c =  ActiveRecord::Base::sanitize_sql_for_conditions(a)
+			@contacts = Contact.where( a ).paginate(:page => params[:page], :per_page => 25)
+			render 'index'
+		end
 
 
 	end

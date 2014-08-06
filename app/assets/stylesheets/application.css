@@ -14,6 +14,7 @@
  *= require_self
  */
 body {
+margin-top: 0; 
 font-family: 'Oxygen', sans-serif;
 width: 100%
 }
@@ -34,6 +35,27 @@ div.flash.notice {border: 2px solid blue; color:blue;}
 table.results tr:nth-child(even)
 {
 background:#fdfde0;
+}
+
+/***  Nav  ***/
+nav {
+	margin-top: 0;
+	background: black;
+	height: 40px;
+}
+nav ul{
+	margin-top: 0;
+	list-style: none;
+
+}
+nav li{
+	display: inline-block;
+	background: lightgrey;
+	margin-top: 2px;
+	height: 25px;
+	padding: 5px;
+	 
+
 }
 /***  Results/search  ***/
 
@@ -147,5 +169,49 @@ form.edit_contact input:-moz-placeholder {
 form.edit_contact input:-ms-input-placeholder { 
 	color: transparent;
 }
+
+
+
+form#contact_find  ul{
+	list-style: none;
+}
+form#contact_find {
+	width: 400px;
+}
+form#contact_find  li{
+	
+	float: left;
+	clear: left;
+	width: 100%;
+	padding-bottom: 1em;
+	padding-top: .2em;
+	border-top: 1px solid lightgray;
+}
+form#contact_find  input:focus{
+	background: #fdfde0
+
+}
+form#contact_find  ul li label{
+	display: inline-block;
+	min-width: 45%;
+	}
+form#contact_find  ul li input{
+	display: inline-block;
+	min-width: 48%;
+	}
+
+form#contact_find input::-webkit-input-placeholder{
+	color:transparent;
+}
+form#contact_find  input::-moz-placeholder {
+	color: transparent;
+}
+form#contact_find  input:-moz-placeholder {  
+	color: transparent;
+}
+form#contact_find  input:-ms-input-placeholder { 
+	color: transparent;
+}
+
 
 

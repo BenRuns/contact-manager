@@ -17,8 +17,13 @@
 <% end %>
 
 <nav>
+<ul>
+	<li> <%= link_to "Home", contacts_path, :method => :get %></li>
+	<li> <%= button_to "Add New Contact", new_contact_path, :method => :get %> </li>
+	<li> <%= button_to "Search", contacts_find_path, :method => :get %> </li>
 
-<%= button_to "Add New Contact", new_contact_path, :method => :get %> 
+</ul>
+
 
 
  </nav>

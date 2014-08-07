@@ -1,7 +1,18 @@
 class ContactsController < ApplicationController
 
 	def index
-		@contacts = Contact.order('first_name').paginate(:page => params[:page], :per_page => 25)
+
+		if params[:order] == "first_name" || params[:order] == "last_name" || params[:order] == "email" || params[:order] == "phone_number" || params[:order] == "city"
+		
+		order = params[:order]
+		
+		else
+		
+		order = "first_name"
+		end
+
+
+		@contacts = Contact.order(order).paginate(:page => params[:page], :per_page => 25)
 		
 
 		
@@ -87,6 +98,7 @@ class ContactsController < ApplicationController
     									 :street_address, :middle_name,
     									 :country, :state, :postal_code )
   	end
+
 
 
 end

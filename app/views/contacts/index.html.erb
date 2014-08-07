@@ -1,10 +1,10 @@
 <table class="results"> 
 	<tr class="results-headers">
-		<th> First Name </th>
-		<th> Last Name </th>
-		<th> Email  </th>
-		<th> Phone </th>
-		<th> Location  </th>
+		<th> <%= link_to "First Name", contacts_path(:order => "first_name") %> </th>
+		<th> <%= link_to "Last Name", contacts_path(:order => "last_name") %>  </th>
+		<th> <%= link_to "Email", contacts_path(:order => "email") %>  </th>
+		<th> <%= link_to "Phone", contacts_path(:order => "phone_number") %>  </th>
+		<th> <%= link_to "Location", contacts_path(:order => "city") %>  </th>
 		<th> View </th>
 		<th> Edit </th>
 	</tr>

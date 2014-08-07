@@ -36,10 +36,10 @@ class ContactsController < ApplicationController
 
 		if @contact.save 
 			
-			flash[:success] = "Contact has been successfully added"
+			flash.now[:success] = "Contact has been successfully added"
 			redirect_to "/contacts"
 		else
-			flash[:error] = "There was a problem adding the contact." +
+			flash.now[:error] = "There was a problem adding the contact." +
 							" " + @contact.errors.full_messages.join(', ')
 
 			render 'new'
@@ -54,7 +54,7 @@ class ContactsController < ApplicationController
 
 		if @contact.save 
 			
-			flash[:success] = "Contact has been successfully updated"
+			flash.now[:success] = "Contact has been successfully updated"
 			redirect_to "/contacts"
 		else
 			flash[:error] = "There was a problem adding the contact." +
@@ -67,7 +67,7 @@ class ContactsController < ApplicationController
 	def destroy
 		@contact = Contact.find_by_id(params[:id])
 		@contact.delete
-		flash[:success] = "Contact has been successfully deleted"
+		flash.now[:success] = "Contact has been successfully deleted"
 		redirect_to contacts_path
 	end
 
@@ -83,8 +83,14 @@ class ContactsController < ApplicationController
 			a = contact_params.delete_if { |x,y| y.empty? }
 			#b = a.collect { |x,y| "#{x}='#{y}'" if !y.nil? }
 			#c =  ActiveRecord::Base::sanitize_sql_for_conditions(a)
+			
 			@contacts = Contact.where( a ).paginate(:page => params[:page], :per_page => 25)
-			render 'index'
+			if @contacts.count > 1	
+				render 'index'
+			else 
+				flash.now[:error] = "No Matches"
+				render "search"
+			end
 		end
 
 

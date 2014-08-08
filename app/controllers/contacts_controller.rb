@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
 
 	def index
 
-		if params[:order] == "first_name" || params[:order] == "last_name" || params[:order] == "email" || params[:order] == "phone_number" || params[:order] == "city"
+		if params[:order] == "first_name" || params[:order] == "last_name" || params[:order] == "email" || params[:order] == "phone_number" || params[:order] == "country, state, city"
 		
 		order = params[:order]
 		
